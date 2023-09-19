@@ -23,6 +23,10 @@ Stock.init(
       type: DataTypes.FLOAT,
       allowNull: false,
     },
+    quanitity: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
