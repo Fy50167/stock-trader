@@ -12,15 +12,15 @@
 <body>
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-6">
-        <a href="/"><img src = '/images/logo.png'></a>
-      <nav>
-        <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
-        <p class = 'balance'>Balance: {{balance}}</p>
-        {{else}}
-        <a href="/login" class = 'large-text'>Login</a>
-        {{/if}}
-      </nav>
+        <a href="/"><img class = 'logo' src = '/images/logo.png'></a>
+        <nav>
+            <!-- Conditionally render login or logout links -->
+            {{#if logged_in}}
+            <p class = 'balance'>Balance: {{balance}}</p>
+            {{else}}
+            <a href="/login" class = 'large-text'>Login</a>
+            {{/if}}
+        </nav>
     </header>
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->

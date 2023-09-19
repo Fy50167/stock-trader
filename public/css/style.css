@@ -1,0 +1,21 @@
+* {
+    font-family: 'Quicksand', sans-serif;
+  }
+
+.header {
+    padding-right: 5%;
+    background-color: #FFD580;
+  }
+  
+.large-text {
+font-size: 28px;
+}
+
+.logo {
+    width: 300px;
+    height: 200px;
+}
+  
+
+  
+
