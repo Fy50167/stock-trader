@@ -37,14 +37,7 @@ User.init(
             isDecimal: true
         }
     }, 
-    stock_id: {
-        type: DataTypes.INTEGER,
-        references: {
-        model: 'Stock',
-        key: 'id',
-        unique: false
-      }
-    }
+    
   },
   {
     sequelize,
