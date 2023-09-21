@@ -16,7 +16,7 @@ router.post('/', withAuth, async (req, res) => {
     }
   });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     // update a stock by its `id` value
     try{
       const stockData = await Stock.update(req.body, {
