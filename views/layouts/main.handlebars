@@ -17,7 +17,7 @@
         <nav>
             <!-- Conditionally render login or logout links -->
             {{#if logged_in}}
-            <p class = 'balance'>Balance: {{balance}}</p>
+            <a class = 'large-text' id = 'logout'>Logout</a>
             {{else}}
             <a href="/login" class = 'large-text'>Login</a>
             {{/if}}

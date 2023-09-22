@@ -3,8 +3,10 @@ const { User } = require('../../models');
 
 router.post('/', async (req, res) => {
   try {
+    console.log('Hit this route!');
+    console.log(req.body);
     const userData = await User.create(req.body);
-
+    console.log(userData);
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
@@ -12,7 +14,7 @@ router.post('/', async (req, res) => {
       res.status(200).json(userData);
     });
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json({ message: 'Failed to register!' });
   }
 });
 

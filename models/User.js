@@ -37,7 +37,8 @@ User.init(
     },
     balance: {
         type: DataTypes.DECIMAL,
-        allowNull: false,
+        allowNull: true,
+        defaultValue: 0,
         validate: {
             isDecimal: true
         }
