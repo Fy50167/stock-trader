@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+const withAuth = require('../../utils/auth');
+
 
 router.post('/', async (req, res) => {
   try {
@@ -17,6 +19,34 @@ router.post('/', async (req, res) => {
     res.status(400).json({ message: 'Failed to register!' });
   }
 });
+
+router.get('/balance', withAuth, async (req, res) => {
+    try {
+        // Find the logged in user based on the session ID
+      const userData = await User.findByPk(req.session.user_id, {
+        attributes: { exclude: ['password'] },
+      });
+    
+      const balance = userData.get({ plain: true });
+      res.status(200).json(balance);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+});
+
+router.put('/balance', withAuth, async (req, res) => {
+    try{
+      const userData = await User.update(req.body, {
+        where: {
+          id: req.params.id,
+        },
+      });
+      res.status(200).json({message: "Balance updated!"});
+    } catch {
+      res.status(400).json(err);
+    }
+});
+
 
 router.post('/login', async (req, res) => {
   try {
@@ -49,6 +79,8 @@ router.post('/login', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+
 
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {

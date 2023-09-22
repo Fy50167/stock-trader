@@ -27,22 +27,16 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/stock/:id', async (req, res) => {
+router.get('/balance', withAuth, async (req, res) => {
   try {
-    const stockData = await Stock.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id);
 
-    const stock = stockData.get({ plain: true });
+    const user = userData.get({ plain: true });
 
-    res.render('stock', {
-      ...stock,
-      logged_in: req.session.logged_in
+    res.render('balance', {
+      ...user,
+      logged_in: true
     });
   } catch (err) {
     res.status(500).json(err);
