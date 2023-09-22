@@ -27,6 +27,29 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/stock', async (req, res) => {
+  try {
+    const stockData = await Stock.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
+    });
+
+    const stock = stockData.get({ plain: true });
+
+    res.render('market', {
+      ...stock,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
 router.get('/stock/:id', async (req, res) => {
   try {
     const stockData = await Stock.findByPk(req.params.id, {

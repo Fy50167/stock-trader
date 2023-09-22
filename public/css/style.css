@@ -5,7 +5,7 @@
     font-family: 'Quicksand', sans-serif;
   }
 
-body {
+.wrapper {
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -20,8 +20,12 @@ p {
     background-color: #FFD580;
   }
   
-.large-text {
-font-size: 28px;
+.log-btn {
+  font-size: 28px;
+  background-color: #47a0ff;
+  padding: 15px;
+  border-radius: 10px;
+  color: black;
 }
 
 .logo {
@@ -29,12 +33,41 @@ font-size: 28px;
     height: 200px;
 }
 
-.marketplace {
+.body {
   background-color: #87CEFA;
   width: 100%;
-  padding: 5%;
-  text-align: center;
   flex-grow: 1;
+}
+
+.body-section {
+  padding: 5%;
+  display: flex;
+  width: 100%;
+  height: auto;
+}
+
+.section-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.side-nav {
+  flex-grow: 1;
+  background-color: white;
+  height: 100%;
+  flex-direction: column;
+  justify-content: start;
+  width: 25%;
+}
+
+.navbar-collapse {
+  align-items: start;
+}
+
+.nav-item {
+  border-bottom: 1px solid black;
+  font-weight: bold;
 }
 
 .stocks-list {
@@ -68,7 +101,41 @@ font-size: 28px;
   width: 60px;
   height: 45px;
 }
-  
+
+
+@media screen and (max-width: 992px) {
+  .log-btn {
+    font-size: 18px;
+  }
+
+    .logo {
+      width: 200px;
+      height: 125px;
+  }
+
+  .section-wrapper {
+    flex-direction: column;
+  }
+
+  .side-nav {
+    height: auto;
+    flex-wrap: nowrap;
+    flex-grow: 0;
+    flex-direction: column;
+    justify-content: start;
+    width: 100%;
+    padding: 5% 0;
+  }
+
+  .nav-item {
+    text-align: center;
+  }
+
+  .nav-item:first-of-type {
+    margin-top: 10px;
+    border-top: 1px solid black;
+  }
+}
 
   
 
