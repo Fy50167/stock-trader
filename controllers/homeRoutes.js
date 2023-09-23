@@ -17,8 +17,13 @@ router.get('/', async (req, res) => {
     // Serialize data so the template can read it
     const stocks = stocksData.map((stock) => stock.get({ plain: true }));
 
+    const userData = await User.findByPk(req.session.user_id);
+
+    const user = userData.get({ plain: true });
+
     // Pass serialized data and session flag into template
-    res.render('homepage', {
+    res.render('market', {
+      ...user,
       stocks,
       logged_in: req.session.logged_in 
     });
@@ -42,6 +47,7 @@ router.get('/balance', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
