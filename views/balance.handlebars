@@ -1,20 +1,23 @@
-<div class="col-md-6">
-    <h2>View Balance</h2>
+<div class="container">
+  <div class="row justify-content-center pt-5">
+    <div class="balance col-md-6 align-self-center border border-2 border-white rounded-3">
+        <h2>View Balance</h2>
 
-    <form class="form balance-form">
-      <div class="form-group">
-        <label for="current-balance">Current Balance:</label>
-        <p id = "current-balance">{{balance}}</p>
-      </div>
-      <div class="form-group">
-        <label for="add-balance">Add Balance:</label>
-        <input class="form-input" type="number" id="add-balance" name="add-balance"/>
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">submit</button>
-      </div>
-    </form>
+        <form class="form balance-form">
+          <div class="form-group">
+            <label for="current-balance">Current Balance:</label>
+            <p>{{balance}}</p>
+          </div>
+          <div class="form-group">
+            <label for="add-balance">Add Balance:</label>
+            <input class="form-input" type="number" id="add-balance" name="add-balance" />
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary" type="submit">submit</button>
+          </div>
+        </form>
+    </div>
+  </div>
 </div>
-
 
 <script src="./js/balance.js"></script>
