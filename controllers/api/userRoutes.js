@@ -36,17 +36,19 @@ router.get('/balance', withAuth, async (req, res) => {
 
 router.put('/balance', withAuth, async (req, res) => {
     try{
-      const userData = await User.update(req.body, {
-        where: {
-          id: req.params.id,
-        },
-      });
+      console.log("hit");
+      console.log(req.body.balance);
+      console.log(req.session.user_id );
+      const userData = await User.update(
+        { balance: req.body.balance},
+        { returning: true, where: { id: req.session.user_id }}
+      );
+      console.log(userData);
       res.status(200).json({message: "Balance updated!"});
-    } catch {
+    } catch (err){
       res.status(400).json(err);
     }
 });
-
 
 router.post('/login', async (req, res) => {
   try {
