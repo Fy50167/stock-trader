@@ -20,25 +20,11 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/balance', withAuth, async (req, res) => {
-    try {
-        // Find the logged in user based on the session ID
-      const userData = await User.findByPk(req.session.user_id, {
-        attributes: { exclude: ['password'] },
-      });
-    
-      const balance = userData.get({ plain: true });
-      res.status(200).json(balance);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-});
+//route for updating user balance from balancs.js
 
 router.put('/balance', withAuth, async (req, res) => {
     try{
-      console.log("hit");
-      console.log(req.body.balance);
-      console.log(req.session.user_id );
+
       const userData = await User.update(
         { balance: req.body.balance},
         { returning: true, where: { id: req.session.user_id }}
@@ -81,8 +67,6 @@ router.post('/login', async (req, res) => {
     res.status(400).json(err);
   }
 });
-
-
 
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {

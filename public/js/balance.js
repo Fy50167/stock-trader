@@ -6,7 +6,8 @@ const balanceFormHandler = async (event) => {
     const addBalance = parseFloat(document.querySelector('#add-balance').value);
     const currentBalance = parseFloat(document.querySelector('#current-balance').innerHTML);
   
-    if (addBalance) {
+    //add validation code to check for negative numbers and the e character 
+    if (addBalance || addBalance > 0) {
      const newBalance = addBalance + currentBalance;
      //console.log('hit');
 
@@ -21,9 +22,12 @@ const balanceFormHandler = async (event) => {
       // If successful, redirect the browser to the home page
       document.location.replace('/balance');
     } else {
-      alert(response.statusText);
+      alert(response.statusText);//remove alert for HTML text
     }
+    } else {
+        //include code to display message without alert
     }
+
   };
 
   document
