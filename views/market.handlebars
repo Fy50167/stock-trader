@@ -10,30 +10,7 @@
             <p id = 'id-hide' class = 'id-hide'>{{id}}</p>
         </div>
         
-        <div class = 'stocks-list'>
-            {{#each stocks as |stock|}}
-                <div class = 'stock'>
-
-                    <div>
-                        <p>{{stock.company}}</p>
-                    </div>
-
-                    <div>
-                        <p>{{stock.symbol}}</p>
-                    </div>
-
-                    <div>
-                        <p>{{stock.price}}</p>
-                    </div>
-
-                    <div>
-                        <button class = 'buy-button' >
-                            <img class = 'buy-button' src = '/images/buy-button.png'>
-                        </button>
-                    </div>
-                </div>
-            {{/each}}
-        </div>
+     {{>stock}}
             
 
     </section>

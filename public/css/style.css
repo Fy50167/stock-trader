@@ -89,7 +89,6 @@ p {
   border-radius: 5px;
   border: 1px solid black;
   width: 100%;
-  display: flex;
   justify-content: space-between;
   padding: 1.5% 5%;
 }
