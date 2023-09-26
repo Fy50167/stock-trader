@@ -30,6 +30,7 @@ const balanceFormHandler = async (event) => {
           icon: 'error',
           title: 'Oops...',
           text: response.statusText,
+          confirmButtonColor: "#47a0ff",
         });
       }
     } else {
@@ -38,6 +39,7 @@ const balanceFormHandler = async (event) => {
           icon: 'error',
           title: 'Oops...',
           text: 'Please provide a positive value!',
+          confirmButtonColor: "#47a0ff",
         });
     }
   };

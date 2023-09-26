@@ -17,7 +17,13 @@ const loginFormHandler = async (event) => {
       // If successful, redirect the browser to the home page
       document.location.replace('/');
     } else {
-      alert(response.statusText);
+      // alert(response.statusText);
+      Swal.fire({
+        icon: 'error',
+        title: 'Login failed...',
+        text: 'Incorrect password or email!',
+        confirmButtonColor: "#47a0ff",
+      });
     }
   }
 };

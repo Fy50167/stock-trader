@@ -2,7 +2,7 @@ const userId = parseInt(document.querySelector('#user-id').innerHTML);
 
 const buyStock = async (id) => {
     const stockId = parseInt(document.querySelector(`#id-${id}`).innerHTML);
-    const response = await fetch(`/api/stock/${stockId}`, {
+    const response = await fetch(`/api/stocks/${stockId}`, {
       method: 'PUT',
       body: JSON.stringify({ 
         user_id: userId }),
