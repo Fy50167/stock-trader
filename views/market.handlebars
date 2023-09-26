@@ -34,53 +34,27 @@
             <h4>These are all of the stocks that are currently available.</h4>
             <h4>This is your current balance: <span id = 'current-balance'>{{balance}}</span></h4>
         </div>
-
+        
         <div class = 'stocks-list'>
-            <div class = 'stock'>
-                <div>
-                    <p>Stock Title</p>
-                </div>
-                <div>
-                    <p>Stock Symbol</p>
-                </div>
-                <div>
-                    <p>Stock Price</p>
-                </div>
-                <button id = 'buy-button'>
-                    <img class = 'buy-button' src = '/images/buy-button.png'>
-                </button>
-            </div>
+            {{#each stocks as |stock|}}
+                <div class = 'stock'>
+                    <div>
+                        <p>{{stock.company}}</p>
+                    </div>
 
-            <div class = 'stock'>
-                <div>
-                    <p>Stock Title</p>
-                </div>
-                <div>
-                    <p>Stock Symbol</p>
-                </div>
-                <div>
-                    <p>Stock Price</p>
-                </div>
-                <button id = 'buy-button'>
-                    <img class = 'buy-button' src = '/images/buy-button.png'>
-                </button>
-            </div>
+                    <div>
+                        <p>{{stock.symbol}}</p>
+                    </div>
 
-            <div class = 'stock'>
-                <div>
-                    <p>Stock Title</p>
+                    <div>
+                        <p>{{stock.price}}</p>
+                    </div>
+
+                    <button id = 'buy-button'>
+                        <img class = 'buy-button' src = '/images/buy-button.png'>
+                    </button>
                 </div>
-                <div>
-                    <p>Stock Symbol</p>
-                </div>
-                <div>
-                    <p>Stock Price</p>
-                </div>
-                <button id = 'buy-button'>
-                    <img class = 'buy-button' src = '/images/buy-button.png'>
-                </button>
-            </div>
-            
+            {{/each}}
         </div>
             
 
