@@ -9,7 +9,7 @@ const balanceFormHandler = async (event) => {
     console.log(addBalance);
   
     //add validation code to check for negative numbers and the e character 
-    if (addBalance) {
+    if (addBalance > 0) {
      const newBalance = addBalance + currentBalance;
      //console.log('hit');
 
@@ -23,14 +23,23 @@ const balanceFormHandler = async (event) => {
       if (response.ok) {
         // If successful, refresh the page
         document.location.replace('/balance');
+
       } else {
-        alert(response.statusText);//remove alert for HTML text
+        //alert(response.statusText);//remove alert for HTML text
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: response.statusText,
+        });
       }
     } else {
         //include code to display message without alert
-
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Please provide a positive value!',
+        });
     }
-
   };
 
   document
