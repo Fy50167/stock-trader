@@ -1,4 +1,3 @@
-const Swal = require('sweetalert2');
 
 const balanceFormHandler = async (event) => {
     event.preventDefault();
@@ -6,11 +5,12 @@ const balanceFormHandler = async (event) => {
     // Collect value from the balance form
     const addBalance = parseFloat(document.querySelector('#add-balance').value);
     const currentBalance = parseFloat(document.querySelector('#current-balance').innerHTML);
+
+    console.log(addBalance);
   
     //add validation code to check for negative numbers and the e character 
-    if (addBalance || addBalance > 0) {
+    if (addBalance) {
      const newBalance = addBalance + currentBalance;
-     //console.log('hit');
 
      // Send a PUT request to the API endpoint
     const response = await fetch('/api/users/balance', {
@@ -22,29 +22,14 @@ const balanceFormHandler = async (event) => {
       if (response.ok) {
         // If successful, refresh the page
         document.location.replace('/balance');
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Your balance has been saved',
-          showConfirmButton: false,
-          timer: 1500
-        })
       } else {
-        //alert(response.statusText);//remove alert for HTML text
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong, your balance could not be updated!',
-        })
+        alert(response.statusText);//remove alert for HTML text
       }
     } else {
         //include code to display message without alert
-        Swal.fire({
-          icon: 'error',
-          title: 'Invalid Balance',
-          text: 'Please provide a positive balance value and try again!',
-        })
+
     }
+
   };
 
   document
