@@ -1,3 +1,4 @@
+const Swal = require('sweetalert2');
 
 const balanceFormHandler = async (event) => {
     event.preventDefault();
@@ -18,16 +19,32 @@ const balanceFormHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
 
-    if (response.ok) {
-      // If successful, redirect the browser to the home page
-      document.location.replace('/balance');
-    } else {
-      alert(response.statusText);//remove alert for HTML text
-    }
+      if (response.ok) {
+        // If successful, refresh the page
+        document.location.replace('/balance');
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your balance has been saved',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      } else {
+        //alert(response.statusText);//remove alert for HTML text
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong, your balance could not be updated!',
+        })
+      }
     } else {
         //include code to display message without alert
+        Swal.fire({
+          icon: 'error',
+          title: 'Invalid Balance',
+          text: 'Please provide a positive balance value and try again!',
+        })
     }
-
   };
 
   document
