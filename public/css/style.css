@@ -104,6 +104,10 @@ p {
   height: 45px;
 }
 
+.id-hide {
+  display: none;
+}
+
 
 @media screen and (max-width: 992px) {
   .log-btn {
