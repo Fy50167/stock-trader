@@ -11,6 +11,7 @@ const balanceFormHandler = async (event) => {
     //add validation code to check for negative numbers and the e character 
     if (addBalance) {
      const newBalance = addBalance + currentBalance;
+     //console.log('hit');
 
      // Send a PUT request to the API endpoint
     const response = await fetch('/api/users/balance', {
