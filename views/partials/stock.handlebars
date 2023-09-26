@@ -18,7 +18,6 @@
     {{#each stocks as |stock|}}
         <div class = "container stock">
             <div class="row">
-                <p id = 'stock-id' class = 'hide'>{{stock.id}}</p>
                 <div class="col">
                     <p>{{stock.company}}</p>
                 </div>
@@ -31,6 +30,7 @@
                     <p>{{stock.price}}</p>
                 </div>
                 <div class="col">
+                    <p id = 'id-{{stock.id}}' class = 'hide'>{{stock.id}}</p>
                     <button id = 'buy-button' class = 'buy-button'>
                         <img class = 'button-image' src = '/images/buy-button.png'>
                     </button>

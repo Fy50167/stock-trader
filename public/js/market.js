@@ -1,7 +1,7 @@
 const userId = parseInt(document.querySelector('#user-id').innerHTML);
 
-const buyStock = async () => {
-    const stockId = parseInt(this.parentElement.parentElement.firstChild.innerHTML);
+const buyStock = async (id) => {
+    const stockId = parseInt(document.querySelector(`#id-${id}`).innerHTML);
     const response = await fetch(`/api/stock/${stockId}`, {
       method: 'PUT',
       body: JSON.stringify({ 
@@ -12,6 +12,9 @@ const buyStock = async () => {
 
 const buyButtons = document.getElementsByClassName('buy-button');
 
+let i = 1;
+
 for (button of buyButtons) {
-  button.addEventListener('click', buyStock)
+  button.addEventListener('click', buyStock(i));
+  i++;
 };
