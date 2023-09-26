@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Stock, User } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try {
     // Get all stocks and JOIN with user data
     const stocksData = await Stock.findAll({
@@ -27,8 +27,7 @@ router.get('/', async (req, res) => {
       stocks,
       logged_in: req.session.logged_in 
     });
-    
-  } catch (err) {    
+  } catch (err) {
     res.status(500).json(err);
   }
 });
@@ -75,12 +74,10 @@ router.get('/login', (req, res) => {
   try {
     // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/');
+    res.redirect('/profile');
     return;
-  } else {
-    res.render('login');
   }
-    
+    res.render('login');
   } catch (err) {
     res.status(500).json(err);
   }
