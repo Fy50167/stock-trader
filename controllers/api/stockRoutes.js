@@ -16,6 +16,26 @@ router.post('/', withAuth, async (req, res) => {
     }
   });
 
+router.post('/:id', withAuth, async (req, res) => {
+    try {
+      const stockData = await Stock.findByPk(req.params.id);
+      console.log(stockData);
+
+      const newStock = await Stock.create({
+        company: stockData.dataValues.company,
+        symbol: stockData.dataValues.symbol,
+        price: stockData.dataValues.price,
+        quantity: 1,
+        user_id: req.session.user_id,
+      });
+  
+      res.status(200).json(newStock);
+    } catch (err) {
+      res.status(400).json(err);
+    }
+  });
+
+
 router.put('/:id', withAuth, async (req, res) => {
     // update a stock by its `id` value
     try{
@@ -25,7 +45,7 @@ router.put('/:id', withAuth, async (req, res) => {
         },
       });
       res.status(200).json({message: "Stock quantity updated!"});
-    } catch {
+    } catch (err) {
       res.status(400).json(err);
     }
   });
