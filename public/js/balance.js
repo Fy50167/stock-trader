@@ -5,11 +5,12 @@ const balanceFormHandler = async (event) => {
     // Collect value from the balance form
     const addBalance = parseFloat(document.querySelector('#add-balance').value);
     const currentBalance = parseFloat(document.querySelector('#current-balance').innerHTML);
+
+    console.log(addBalance);
   
     //add validation code to check for negative numbers and the e character 
-    if (addBalance || addBalance > 0) {
+    if (addBalance) {
      const newBalance = addBalance + currentBalance;
-     //console.log('hit');
 
      // Send a PUT request to the API endpoint
     const response = await fetch('/api/users/balance', {
@@ -18,14 +19,15 @@ const balanceFormHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
 
-    if (response.ok) {
-      // If successful, redirect the browser to the home page
-      document.location.replace('/balance');
-    } else {
-      alert(response.statusText);//remove alert for HTML text
-    }
+      if (response.ok) {
+        // If successful, refresh the page
+        document.location.replace('/balance');
+      } else {
+        alert(response.statusText);//remove alert for HTML text
+      }
     } else {
         //include code to display message without alert
+
     }
 
   };

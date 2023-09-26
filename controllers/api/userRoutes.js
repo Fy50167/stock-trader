@@ -2,7 +2,6 @@ const router = require('express').Router();
 const { User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-
 router.post('/', async (req, res) => {
   try {
     console.log('Hit this route!');
@@ -21,15 +20,12 @@ router.post('/', async (req, res) => {
 });
 
 //route for updating user balance from balancs.js
-
 router.put('/balance', withAuth, async (req, res) => {
     try{
-
       const userData = await User.update(
         { balance: req.body.balance},
         { returning: true, where: { id: req.session.user_id }}
       );
-      console.log(userData);
       res.status(200).json({message: "Balance updated!"});
     } catch (err){
       res.status(400).json(err);
