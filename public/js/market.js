@@ -1,15 +1,17 @@
-const userId = document.querySelector('#id-hide').innerHTML;
+const userId = parseInt(document.querySelector('#user-id').innerHTML);
 
 const buyStock = async () => {
-
-    const response = await fetch('/api/stock', {
+    const stockId = parseInt(this.parentElement.parentElement.firstChild.innerHTML);
+    const response = await fetch(`/api/stock/${stockId}`, {
       method: 'PUT',
-      body: JSON.stringify({ user_id: userId }),
+      body: JSON.stringify({ 
+        user_id: userId }),
       headers: { 'Content-Type': 'application/json' },
     });
 };
 
 const buyButtons = document.getElementsByClassName('buy-button');
-buyButtons.forEach((button) => { 
-    button.addEventListener('click', buyStock)
-});
+
+for (button of buyButtons) {
+  button.addEventListener('click', buyStock)
+};

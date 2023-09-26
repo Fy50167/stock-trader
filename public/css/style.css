@@ -98,12 +98,12 @@ p {
   align-items: center;
 }
 
-.buy-button {
+.button-image {
   width: 60px;
   height: 45px;
 }
 
-.id-hide {
+.hide {
   display: none;
 }
 
