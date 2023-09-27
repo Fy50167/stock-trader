@@ -140,6 +140,21 @@ p {
     margin-top: 10px;
     border-top: 1px solid black;
   }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .mobile {
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .mobile p, button {
+    margin: auto;
+  }
+
 }
 
 .balance{

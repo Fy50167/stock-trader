@@ -1,15 +1,15 @@
 <div class = 'stocks-list'>
    <div class="container stock" style="background-color: #FFD580; color: black;"> 
         <div class="row">
-            <div class="col-3 text-uppercase">
+            <div class="col-3 text-uppercase mobile">
                 <p>Company</p>
             </div>
 
-            <div class="col-3 text-uppercase">
+            <div class="col-3 text-uppercase mobile">
                 <p>Symbol</p>
             </div>
 
-            <div class="col text-uppercase">
+            <div class="col text-uppercase mobile">
                 <p>Price</p>
             </div>
             <div></div>
@@ -18,18 +18,18 @@
     {{#each stocks as |stock|}}
         <div class = "container stock">
             <div class="row">
-                <div class="col">
+                <div class="col mobile">
                     <p>{{stock.company}}</p>
                 </div>
 
-                <div class="col">
+                <div class="col mobile">
                     <p>{{stock.symbol}}</p>
                 </div>
 
-                <div class="col">
+                <div class="col mobile">
                     <p>{{stock.price}}</p>
                 </div>
-                <div class="col">
+                <div class="col mobile">
                     
                     <button id = 'buy-button' class = 'buy-button'>
                         <img class = 'button-image' src = '/images/buy-button.png'>
