@@ -31,12 +31,14 @@ const buyStock = async (event) => {
 
       if (response.ok && responsePUT.ok) {
         Swal.fire({
-          position: 'top-end',
           icon: 'success',
           title: 'Stock purchased!',
           showConfirmButton: false,
           timer: 1500
         }); 
+        const newBalance = parseInt(currentBalance - stockPrice);
+        document.querySelector('#current-balance').innerHTML = newBalance;
+        
       } else {
         Swal.fire({
           icon: 'error',
