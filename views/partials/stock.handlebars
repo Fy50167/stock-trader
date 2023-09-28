@@ -16,15 +16,16 @@
         </div>
     </div>
     {{#each stocks as |stock|}}
-        <div class = "container stock">
-            <div class="row">
-                <div class="col mobile">
-                    <p>{{stock.company}}</p>
-                </div>
+        {{#unless stock.user_id}}
+            <div class = "container stock">
+                <div class="row">
+                    <div class="col mobile">
+                        <p>{{stock.company}}</p>
+                    </div>
 
-                <div class="col mobile">
-                    <p>{{stock.symbol}}</p>
-                </div>
+                    <div class="col mobile">
+                        <p>{{stock.symbol}}</p>
+                    </div>
 
                 <div class="col mobile">
                     <p>{{stock.price}}</p>
@@ -37,6 +38,6 @@
                     <div id = 'id-{{stock.id}}' class = 'hide'>{{stock.id}}</div>
                 </div>
             </div>
-        </div>
+        {{/unless}}
     {{/each}}
 </div>
