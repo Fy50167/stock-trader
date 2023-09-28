@@ -10,9 +10,14 @@
                     <p>Symbol</p>
                 </div>
 
-                <div class="col text-uppercase">
+                <div class="col-2 text-uppercase">
                     <p>Quantity</p>
                 </div>
+
+                <div class="col-2 text-uppercase">
+                    <p>Price</p>
+                </div>
+
             </div>
         </div>
         {{#each stocks as |stock|}}
@@ -27,12 +32,15 @@
                     </div>
 
                     <div class="col">
-                        <p>${{stock.quantity}}</p>
+                        <p>{{stock.quantity}}</p>
                     </div>
-                    <div class="col">
-                        <button>
 
-                        </button>
+                    <div class="col">
+                        <p>${{stock.price}}</p>
+                    </div>
+
+                    <div class="col">
+                        <button>Buy more</button>
                     </div>
                 </div>
             </div>
