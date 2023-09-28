@@ -1,5 +1,3 @@
-
-
 const userId = parseInt(document.querySelector('#user-id').innerHTML);
 const currentBalance = parseFloat(document.querySelector('#current-balance').innerHTML);
 
