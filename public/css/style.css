@@ -151,8 +151,12 @@ p {
     max-width: 100%;
   }
 
-  .mobile p, button {
+  .mobile p {
     margin: auto;
+  }
+
+  .mobile-center {
+    justify-content: center;
   }
 
 }
