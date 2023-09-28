@@ -5,16 +5,17 @@ const currentBalance = parseFloat(document.querySelector('#current-balance').inn
 const sellStock = async (event) => {
     const stockId = parseInt(event.currentTarget.nextElementSibling.innerHTML);
     const stockPrice = parseFloat(event.currentTarget.getAttribute('data'));
-    const sellQuantity = parseFloat(document.querySelector('#sell-quantity').value);
-    const currentQuantity = parseFloat(document.querySelector('#quantity').innerHTML);
+    const sellQuantity = parseInt(event.currentTarget.previousElementSibling.value);
+    const currentQuantity = parseInt(event.currentTarget.previousElementSibling.getAttribute('data'));
 
-    
-    if (sellQuantity < currentQuantity) return Swal.fire({//invalid quantity
+    console.log(stockId, stockPrice, sellQuantity, currentQuantity);
+
+    if (sellQuantity > currentQuantity || sellQuantity < 0) return Swal.fire({//invalid quantity
       icon: 'error',
       title: 'Oops...',
       text: "Please provide a number equal to or less than the number of stocks you own.",
       confirmButtonColor: "#47a0ff",
-    }); else if (sellQuantity = currentQuantity) { //selling all of the stock
+    }); else if (sellQuantity == currentQuantity) { //selling all of the stock
       
       const response = await fetch(`/api/stocks/${stockId}`, {
         method: 'DELETE',
@@ -49,6 +50,7 @@ const sellStock = async (event) => {
     } else { //selling only some of the stock
 
       const newQuantity = currentQuantity - sellQuantity;
+      console.log(newQuantity);
 
       const response = await fetch(`/api/stocks/${stockId}`, {
         method: 'PUT',
@@ -86,12 +88,11 @@ const sellStock = async (event) => {
 };
 
 //change names for profile button ids
-
-const buyButtons = document.getElementsByClassName('buy-button');
+const sellButtons = document.getElementsByClassName('sell-button');
 
 let i = 1;
 
-for (button of buyButtons) {
+for (button of sellButtons) {
 
   button.addEventListener('click', sellStock);
   i++;
