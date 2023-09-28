@@ -2,7 +2,6 @@ const router = require('express').Router();
 const { Stock } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-
 router.post('/', withAuth, async (req, res) => {
     try {
       const newStock = await Stock.create({
