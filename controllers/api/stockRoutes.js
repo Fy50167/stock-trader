@@ -62,9 +62,10 @@ router.post('/:id', withAuth, async (req, res) => {
 router.put('/:id', withAuth, async (req, res) => {
     // update a stock by its `id` value
     try{
+      console.log(req.body.quantity);
       const stockData = await Stock.update(
         { quantity: req.body.quantity},
-        { returning: true, where: { id: req.session.user_id }}
+        { returning: true, where: { id: req.params.id }}
       );
       res.status(200).json({message: "Stock quantity updated!"});
     } catch (err) {

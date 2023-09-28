@@ -2,6 +2,12 @@
     {{>sidebar-nav}}
 
     <section class = 'body-section'>
+        <div class = 'text-center'>
+            <h1>Stocks Marketplace</h1>
+            <h4>These are all of the stocks that are currently available.</h4>
+            <h4>This is your current balance: <span id = 'current-balance'>{{balance}}</span></h4>
+            <p id = 'user-id' class = 'hide'>{{id}}</p>
+        </div>
         <div class = 'stocks-list'>
             <div class="container stock" style="background-color: #FFD580; color: white;"> 
                 <div class="row">
@@ -44,8 +50,8 @@
                         </div>
 
                         <div class="col mobile mobile-center">
-                            <input class="quant-input" type="number" id="sell" name="add-balance" />
-                            <button id = 'sell-button' data={{stock.price}} class = 'buy-button'>
+                            <input class="quant-input" data = {{stock.quantity}} type="number" id="sell" name="add-balance" />
+                            <button id = 'sell-button' data={{stock.price}} class = 'sell-button'>
                                 <img class = 'button-image' src = '/images/sell-button.png'>
                             </button>
                             <div id = 'id-{{stock.id}}' class = 'hide'>{{stock.id}}</div>
@@ -58,3 +64,4 @@
 </section>
 
 <script src="./js/profile.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
