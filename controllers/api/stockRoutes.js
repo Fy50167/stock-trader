@@ -20,15 +20,40 @@ router.post('/:id', withAuth, async (req, res) => {
       const stockData = await Stock.findByPk(req.params.id);
       console.log(stockData);
 
-      const newStock = await Stock.create({
-        company: stockData.dataValues.company,
-        symbol: stockData.dataValues.symbol,
-        price: stockData.dataValues.price,
-        quantity: 1,
-        user_id: req.session.user_id,
-      });
-  
-      res.status(200).json(newStock);
+      const allStockData = await Stock.findAll();
+
+      let exists = false;
+      let newQuantity;
+
+      for (stock of allStockData) {
+        if (stock.dataValues.user_id === req.session.user_id && stock.dataValues.company === stockData.dataValues.company) {
+          exists = true;
+          newQuantity = stock.dataValues.quantity + 1;
+        }
+      }
+
+      if (!exists) {
+        const newStock = await Stock.create({
+          company: stockData.dataValues.company,
+          symbol: stockData.dataValues.symbol,
+          price: stockData.dataValues.price,
+          quantity: 1,
+          user_id: req.session.user_id,
+        });
+    
+        res.status(200).json(newStock);
+      } else {
+
+
+        const newStock = await Stock.update({ quantity: newQuantity }, {
+          where: {
+            company: stockData.dataValues.company,
+            user_id: req.session.user_id
+          }
+        });
+        res.status(200).json(newStock);
+      }
+      
     } catch (err) {
       res.status(400).json(err);
     }
