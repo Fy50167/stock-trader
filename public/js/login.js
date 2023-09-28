@@ -22,7 +22,7 @@ const loginFormHandler = async (event) => {
         icon: 'error',
         title: 'Login failed...',
         text: 'Incorrect password or email!',
-        confirmButtonColor: "#47a0ff",
+        confirmButtonColor: "#DD6B55",
       });
     }
   }
@@ -42,8 +42,6 @@ const signupFormHandler = async (event) => {
       body: JSON.stringify({ name, email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
-
-
     if (response.ok) {
       document.location.replace('/');
     } else {
