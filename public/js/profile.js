@@ -1,14 +1,14 @@
 
 const userId = parseInt(document.querySelector('#user-id').innerHTML);
-const currentBalance = parseFloat(document.querySelector('#current-balance').innerHTML);
+
 
 const sellStock = async (event) => {
+    const currentBalance = parseFloat(document.querySelector('#current-balance').innerHTML);
     const stockId = parseInt(event.currentTarget.nextElementSibling.innerHTML);
     const stockPrice = parseFloat(event.currentTarget.getAttribute('data'));
     const sellQuantity = parseInt(event.currentTarget.previousElementSibling.value);
     const currentQuantity = parseInt(event.currentTarget.previousElementSibling.getAttribute('data'));
 
-    console.log(stockId, stockPrice, sellQuantity, currentQuantity);
 
     if (sellQuantity > currentQuantity || sellQuantity < 0) return Swal.fire({//invalid quantity
       icon: 'error',
@@ -21,7 +21,7 @@ const sellStock = async (event) => {
         method: 'DELETE',
       });
 
-      const newBalance = currentBalance - (stockPrice * sellQuantity);
+      const newBalance = currentBalance + (stockPrice * sellQuantity);
 
       // Send a PUT request to the API endpoint
       const response2 = await fetch('/api/users/balance', {
@@ -32,12 +32,14 @@ const sellStock = async (event) => {
 
       if (response.ok && response2.ok) {
         Swal.fire({
-          position: 'top-end',
           icon: 'success',
           title: 'Stock sold!',
           showConfirmButton: false,
           timer: 1500
         }); 
+        document.querySelector('#current-balance').innerHTML = newBalance;
+        
+
       } else {
         Swal.fire({
           icon: 'error',
@@ -50,7 +52,6 @@ const sellStock = async (event) => {
     } else { //selling only some of the stock
 
       const newQuantity = currentQuantity - sellQuantity;
-      console.log(newQuantity);
 
       const response = await fetch(`/api/stocks/${stockId}`, {
         method: 'PUT',
@@ -58,7 +59,7 @@ const sellStock = async (event) => {
         headers: { 'Content-Type': 'application/json' },
       });
 
-      const newBalance = currentBalance - (stockPrice * sellQuantity);
+      const newBalance = parseInt(currentBalance + (stockPrice * sellQuantity));
 
       // Send a PUT request to the API endpoint
       const response2 = await fetch('/api/users/balance', {
@@ -69,12 +70,14 @@ const sellStock = async (event) => {
 
       if (response.ok && response2.ok) {
         Swal.fire({
-          position: 'top-end',
           icon: 'success',
           title: 'Stock sold!',
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500   
         }); 
+        document.querySelector('#current-balance').innerHTML = newBalance;
+        const currentQuantityDisplay = document.querySelector(`[data-name="${stockId}"]`);
+        currentQuantityDisplay.innerHTML = currentQuantityDisplay.innerHTML - sellQuantity;
       } else {
         Swal.fire({
           icon: 'error',

@@ -3,13 +3,13 @@
 
     <section class = 'body-section'>
         <div class = 'text-center'>
-            <h1>Stocks Marketplace</h1>
-            <h4>These are all of the stocks that are currently available.</h4>
+            <h1>Your Stocks</h1>
+            <h4>These are all of the stocks that are currently in your inventory.</h4>
             <h4>This is your current balance: <span id = 'current-balance'>{{balance}}</span></h4>
             <p id = 'user-id' class = 'hide'>{{id}}</p>
         </div>
         <div class = 'stocks-list'>
-            <div class="container stock" style="background-color: #FFD580; color: white;"> 
+            <div class="container stock" style="background-color: #FFD580; color: black;"> 
                 <div class="row">
                     <div class="col text-uppercase mobile">
                         <p>Company</p>
@@ -42,7 +42,7 @@
                         </div>
 
                         <div class="col mobile">
-                            <p>{{stock.quantity}}</p>
+                            <p data-name = {{stock.id}}>{{stock.quantity}}</p>
                         </div>
 
                         <div class="col mobile">

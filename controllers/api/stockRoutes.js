@@ -18,7 +18,6 @@ router.post('/', withAuth, async (req, res) => {
 router.post('/:id', withAuth, async (req, res) => {
     try {
       const stockData = await Stock.findByPk(req.params.id);
-      console.log(stockData);
 
       const allStockData = await Stock.findAll();
 
@@ -62,7 +61,6 @@ router.post('/:id', withAuth, async (req, res) => {
 router.put('/:id', withAuth, async (req, res) => {
     // update a stock by its `id` value
     try{
-      console.log(req.body.quantity);
       const stockData = await Stock.update(
         { quantity: req.body.quantity},
         { returning: true, where: { id: req.params.id }}

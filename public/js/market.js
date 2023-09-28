@@ -1,8 +1,9 @@
 const userId = parseInt(document.querySelector('#user-id').innerHTML);
-const currentBalance = parseFloat(document.querySelector('#current-balance').innerHTML);
+
 
 
 const buyStock = async (event) => {
+    const currentBalance = parseFloat(document.querySelector('#current-balance').innerHTML);
     const stockId = parseInt(event.currentTarget.nextElementSibling.innerHTML);
     const stockPrice = parseFloat(event.currentTarget.getAttribute('data'));
     const newQuantity = parseInt(event.currentTarget.previousElementSibling.value);
@@ -20,7 +21,7 @@ const buyStock = async (event) => {
         headers: { 'Content-Type': 'application/json' },
       });
 
-      const newBalance = currentBalance - stockPrice;
+      const newBalance = currentBalance - (stockPrice * newQuantity);
 
       // Send a PUT request to the API endpoint
     const responsePUT = await fetch('/api/users/balance', {
@@ -36,7 +37,7 @@ const buyStock = async (event) => {
           showConfirmButton: false,
           timer: 1500
         }); 
-        const newBalance = parseInt(currentBalance - stockPrice);
+        const newBalance = parseInt(currentBalance - (stockPrice * newQuantity));
         document.querySelector('#current-balance').innerHTML = newBalance;
         
       } else {
