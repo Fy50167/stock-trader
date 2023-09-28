@@ -161,3 +161,8 @@ p {
   background-color:antiquewhite;
 }  
 
+.quant-input{
+  height: 52px;
+  width: 70px;
+  font-size: 100%;
+}

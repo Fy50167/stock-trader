@@ -12,7 +12,9 @@
             <div class="col text-uppercase mobile">
                 <p>Price</p>
             </div>
-            <div></div>
+            <div class="col text-uppercase mobile">
+                <p>Quantity</p>
+            </div>
         </div>
     </div>
     
@@ -32,7 +34,7 @@
                         <p>{{stock.price}}</p>
                     </div>
                     <div class="col mobile">
-                        
+                        <input class="quant-input" type="number" id="sell" name="add-balance" />
                         <button id = 'buy-button' data={{stock.price}} class = 'buy-button'>
                             <img class = 'button-image' src = '/images/buy-button.png'>
                         </button>
