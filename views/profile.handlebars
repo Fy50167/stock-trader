@@ -1,0 +1,42 @@
+<section class = 'section-wrapper'>
+    <div class = 'stocks-list'>
+        <div class="container stock" style="background-color: #FFD580; color: white;"> 
+            <div class="row">
+                <div class="col-3 text-uppercase">
+                    <p>Company</p>
+                </div>
+
+                <div class="col-3 text-uppercase">
+                    <p>Symbol</p>
+                </div>
+
+                <div class="col text-uppercase">
+                    <p>Quantity</p>
+                </div>
+            </div>
+        </div>
+        {{#each stocks as |stock|}}
+            <div class = "container stock">
+                <div class="row">
+                    <div class="col">
+                        <p>{{stock.company}}</p>
+                    </div>
+
+                    <div class="col">
+                        <p>{{stock.symbol}}</p>
+                    </div>
+
+                    <div class="col">
+                        <p>${{stock.quantity}}</p>
+                    </div>
+                    <div class="col">
+                        <button>
+
+                        </button>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</section>
+
