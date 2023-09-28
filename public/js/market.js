@@ -3,9 +3,11 @@
 const userId = parseInt(document.querySelector('#user-id').innerHTML);
 const currentBalance = parseFloat(document.querySelector('#current-balance').innerHTML);
 
+
 const buyStock = async (event) => {
     const stockId = parseInt(event.currentTarget.nextElementSibling.innerHTML);
     const stockPrice = parseFloat(event.currentTarget.getAttribute('data'));
+    const newQuantity = parseInt(event.currentTarget.previousElementSibling.value);
 
     //logic for if stockPrice is greater than current balance show sweet alert else carry on with the "purchase"
     if (currentBalance < stockPrice) return Swal.fire({
@@ -16,7 +18,7 @@ const buyStock = async (event) => {
     }); else {
       const response = await fetch(`/api/stocks/${stockId}`, {
         method: 'POST',
-        body: JSON.stringify({ user_id: userId }),
+        body: JSON.stringify({ quantity: newQuantity }),
         headers: { 'Content-Type': 'application/json' },
       });
 

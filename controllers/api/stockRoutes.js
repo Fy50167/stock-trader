@@ -28,7 +28,7 @@ router.post('/:id', withAuth, async (req, res) => {
       for (stock of allStockData) {
         if (stock.dataValues.user_id === req.session.user_id && stock.dataValues.company === stockData.dataValues.company) {
           exists = true;
-          newQuantity = stock.dataValues.quantity + 1;
+          newQuantity = stock.dataValues.quantity + req.body.quantity;
         }
       }
 
@@ -37,13 +37,12 @@ router.post('/:id', withAuth, async (req, res) => {
           company: stockData.dataValues.company,
           symbol: stockData.dataValues.symbol,
           price: stockData.dataValues.price,
-          quantity: 1,
+          quantity: req.body.quantity,
           user_id: req.session.user_id,
         });
     
         res.status(200).json(newStock);
       } else {
-
 
         const newStock = await Stock.update({ quantity: newQuantity }, {
           where: {
