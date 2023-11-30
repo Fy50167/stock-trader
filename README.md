@@ -80,7 +80,7 @@ Francis Yang - [fy50167](https://github.com/fy50167) - fy50167@gmail.com
 
 Project Link: [GitHub](https://github.com/Fy50167/stock-trader)
 
-Deployed Link: [Heroku](https://floating-wildwood-52719-0a69bbab7cea.herokuapp.com)
+Deployed Link: [Heroku](https://limitless-lake-22682-94d9006e293e.herokuapp.com/)
 
 
 
